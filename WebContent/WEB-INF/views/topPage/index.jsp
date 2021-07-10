@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url ="../layout/app.jsp">
     <c:param name="content">
-        <h2>Enjoy UR BLOG Life！</h2>
+        <br />
+        <h2>Enjoy UR★BLOG Life！</h2><br /><br />
+        <p><a href="<c:url value='/users/new' />">⇨　create UR★BLOG account !</a></p><br /><br />
     </c:param>
 </c:import>

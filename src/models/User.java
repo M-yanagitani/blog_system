@@ -34,15 +34,18 @@ import javax.persistence.Table;
 @Entity
 public class User {
     @Id
-    @Column(name = "id")
+    @Column(name = "id") // リソース内での連番
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "code", nullable = false, unique = true)
+    @Column(name = "code", nullable = false, unique = true) // ユーザID
     private String code;
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "profile", length = 300, nullable = false)
+    private String profile;
 
     @Column(name = "password", length = 64, nullable = false)
     private String password;
@@ -56,7 +59,7 @@ public class User {
     @Column(name = "delete_flag", nullable = false)
     private Integer delete_flag;
 
-    @Column(name = "follow_flag", nullable = false)
+    @Column(name = "follow_flag", nullable = false) // 読者設定
     private Integer follow_flag;
 
     public Integer getId() {
@@ -81,6 +84,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
     public String getPassword() {

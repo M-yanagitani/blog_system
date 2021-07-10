@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import models.User;
-import util.DBUtil;
 
 public class UserValidator {
     public static List<String> validate(User u, Boolean codeDuplicateCheckFlag, Boolean passwordCheckFlag) {
@@ -30,20 +29,20 @@ public class UserValidator {
         return errors;
     }
 
-    // 社員番号
+    // ユーザID
     private static String validateCode(String code, Boolean codeDuplicateCheckFlag) {
         // 必須入力チェック
         if(code == null || code.equals("")) {
-            return "社員番号を入力してください。";
+            return "ユーザIDを入力してください。";
         }
 
-        // すでに登録されている社員番号との重複チェック
+        // すでに登録されているユーザIDとの重複チェック
         if(codeDuplicateCheckFlag) {
-            EntityManager em = DBUtil.createEntityManager();
+            EntityManager em = utils.DBUtil.createEntityManager();
             long employees_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class).setParameter("code", code).getSingleResult();
             em.close();
             if(employees_count > 0) {
-                return "入力された社員番号の情報はすでに存在しています。";
+                return "入力されたユーザIDはすでに存在しています。";
             }
         }
 
@@ -53,7 +52,7 @@ public class UserValidator {
     // 社員名の必須入力チェック
     private static String validateName(String name) {
         if(name == null || name.equals("")) {
-            return "氏名を入力してください。";
+            return "名前を入力してください。";
         }
 
         return "";

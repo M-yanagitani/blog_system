@@ -43,3 +43,14 @@ h2 {
     font-family: "Impact";
     color: #00818A;
 }
+
+p {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-family: "Impact";
+    color: #00818A;
+}
+
+select {
+    height: 30px;
+}
