@@ -44,7 +44,10 @@ public class User {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "profile", length = 300, nullable = false)
+    @Column(name = "blog_title", length = 30, nullable = false)
+    private String blog_title;
+
+    @Column(name = "profile", length = 50, nullable = false)
     private String profile;
 
     @Column(name = "password", length = 64, nullable = false)
@@ -92,6 +95,14 @@ public class User {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public String getBlog_title() {
+        return blog_title;
+    }
+
+    public void setBlog_title(String blog_title) {
+        this.blog_title = blog_title;
     }
 
     public String getPassword() {

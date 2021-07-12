@@ -9,23 +9,30 @@
         </c:if>
 
         <!-- ユーザページ -->
-        <h2>UR PAGE</h2>
-        <table id="user_list">
+        <h2>FOLLOW</h2>
+        <table id="user_list" border = "1">
             <tbody>
                 <tr>
                     <th>USER ID</th>
                     <th>NAME</th>
-                    <th>PROFILE</th>
-                    <th>ARTICLE</th>
                     <th>FOLLOW</th>
+                    <th>BLOG</th>
+                    <th>PROFILE</th>
                 </tr>
-                <tr>
+                <c:forEach var="user" items="${users}" varStatus="status">
+                    <tr class="row${status.count % 2}">
                         <td><c:out value="${user.code}" /></td>
                         <td><c:out value="${user.name}" /></td>
+                        <td>
+                            <select>
+                                <option value="0"<c:if test="${user.follow_flag == 0}"> selected</c:if>>フォローしない</option>
+                                <option value="1"<c:if test="${user.follow_flag == 1}"> selected</c:if>>フォローする</option>
+                            </select>
+                        </td>
+                        <td><c:out value="${user.blog_title}" /></td>
                         <td><c:out value="${user.profile}" /></td>
-                        <td><c:out value="${user.profile}" /></td>  <!-- 訂正必要 -->
-                        <td><c:out value="${user.profile}" /></td>  <!-- 訂正必要 -->
-                </tr>
+                     </tr>
+                </c:forEach>
             </tbody>
         </table>
 
@@ -42,7 +49,7 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/users/new' />">新規ユーザー登録</a></p>
+        <p><a href="<c:url value='/users/new' />">⇨ SIGN UP [ 新規登録 ]</a></p>
 
     </c:param>
 </c:import>
