@@ -49,7 +49,6 @@ public class UsersCreateServlet extends HttpServlet {
                         (String)this.getServletContext().getAttribute("pepper")
                     )
                 );
-            u.setFollow_flag(0);
             u.setProfile("");
             u.setBlog_title("NO TITLE");
 

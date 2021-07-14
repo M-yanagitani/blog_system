@@ -15,7 +15,6 @@
                 <tr>
                     <th>USER ID</th>
                     <th>NAME</th>
-                    <th>FOLLOW</th>
                     <th>BLOG</th>
                     <th>PROFILE</th>
                 </tr>
@@ -23,12 +22,6 @@
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${user.code}" /></td>
                         <td><c:out value="${user.name}" /></td>
-                        <td>
-                            <select>
-                                <option value="0"<c:if test="${user.follow_flag == 0}"> selected</c:if>>フォローしない</option>
-                                <option value="1"<c:if test="${user.follow_flag == 1}"> selected</c:if>>フォローする</option>
-                            </select>
-                        </td>
                         <td><c:out value="${user.blog_title}" /></td>
                         <td><c:out value="${user.profile}" /></td>
                      </tr>
