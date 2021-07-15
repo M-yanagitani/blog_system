@@ -21,7 +21,7 @@
                 <c:forEach var="user" items="${users}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${user.code}" /></td>
-                        <td><c:out value="${user.name}" /></td>
+                        <td><a href="<c:url value='/users/show?id=${user.id}' />"><c:out value="${user.name}" /></a></td>
                         <td><c:out value="${user.blog_title}" /></td>
                         <td><c:out value="${user.profile}" /></td>
                      </tr>

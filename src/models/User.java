@@ -25,10 +25,10 @@ import javax.persistence.Table;
         name = "checkRegisteredCode",
         query = "SELECT COUNT(u) FROM User AS u WHERE u.code = :code"
     ),
-    @NamedQuery(
-        name = "checkLoginCodeAndPassword",
-        query = "SELECT u FROM User AS u WHERE u.delete_flag = 0 AND u.code = :code AND u.password = :pass"
-    )
+//    @NamedQuery(
+//        name = "checkLoginCodeAndPassword",
+//        query = "SELECT u FROM User AS u WHERE u.delete_flag = 0 AND u.code = :code AND u.password = :pass"
+//    )
 })
 
 @Entity
@@ -59,8 +59,8 @@ public class User {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
-    @Column(name = "delete_flag", nullable = false)
-    private Integer delete_flag;
+//    @Column(name = "delete_flag", nullable = false)
+//    private Integer delete_flag;
 
     public Integer getId() {
         return id;
@@ -126,11 +126,11 @@ public class User {
         this.updated_at = updated_at;
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
-    }
-
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
-    }
+//    public Integer getDelete_flag() {
+//        return delete_flag;
+//    }
+//
+//    public void setDelete_flag(Integer delete_flag) {
+//        this.delete_flag = delete_flag;
+//    }
 }

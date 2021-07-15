@@ -35,6 +35,7 @@ public class UserDestroyServlet extends HttpServlet {
             EntityManager em = DBUtil.createEntityManager();
 
             User u = em.find(User.class, (Integer)(request.getSession().getAttribute("user_id")));
+
             em.getTransaction().begin();
             em.remove(u);       // データ削除
             em.getTransaction().commit();
@@ -42,7 +43,6 @@ public class UserDestroyServlet extends HttpServlet {
 
             // セッションスコープ上の不要になったデータを削除
             request.getSession().removeAttribute("user_id");
-            request.getSession().setAttribute("flush", "削除が完了しました。");
 
             response.sendRedirect(request.getContextPath() + "/users/index");
         }

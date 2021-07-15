@@ -55,7 +55,7 @@ public class UsersCreateServlet extends HttpServlet {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             u.setCreated_at(currentTime);
             u.setUpdated_at(currentTime);
-            u.setDelete_flag(0);
+//            u.setDelete_flag(0);
 
             List<String> errors = UserValidator.validate(u, true, true);
             if(errors.size() > 0) {

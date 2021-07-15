@@ -22,4 +22,4 @@
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />
-<button type="submit">ENTRY!</button>
+<button type="submit">ENTRY</button>

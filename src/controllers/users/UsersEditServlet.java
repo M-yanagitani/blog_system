@@ -37,7 +37,7 @@ public class UsersEditServlet extends HttpServlet {
 
         em.close();
 
-        request.setAttribute("users", u);
+        request.setAttribute("user", u);
         request.setAttribute("_token", request.getSession().getId());
         request.getSession().setAttribute("users_id", u.getId());
 

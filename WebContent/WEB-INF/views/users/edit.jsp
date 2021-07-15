@@ -4,10 +4,30 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${user != null}">
-                <h2>${user.id} のユーザページ</h2>
-                <p>（パスワードは変更する場合のみ入力してください）</p>
+                <h2>USER PAGE</h2>
                 <form method="POST" action="<c:url value='/users/update' />">
-                    <c:import url="_form.jsp" />
+                    <label for="code">USER ID</label><br />
+                    <input type="text" name="code" value="${user.code}" />
+                    <br /><br />
+
+                    <label for="name">NAME</label><br />
+                    <input type="text" name="name" value="${user.name}" />
+                    <br /><br />
+
+                    <label for="code">BLOG TITLE</label><br />
+                    <input type="text" name="code" value="${user.blog_title}" />
+                    <br /><br />
+
+                    <label for="name">PROFILE</label><br />
+                    <input type="text" name="name" value="${user.profile}" />
+                    <br /><br />
+
+                    <label for="password">PASSWORD</label><br />
+                    <input type="password" name="password" />
+                    <br /><br />
+
+                    <input type="hidden" name="_token" value="${_token}" />
+                    <button type="submit">ENTRY</button>
                 </form>
 
                 <p><a href="#" onclick="confirmDestroy();">このユーザを削除する</a></p>

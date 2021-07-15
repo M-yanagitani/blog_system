@@ -67,7 +67,7 @@ public class UsersUpdateServlet extends HttpServlet {
 
             u.setName(request.getParameter("name"));
             u.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-            u.setDelete_flag(0);
+//            u.setDelete_flag(0);
 
             List<String> errors = UserValidator.validate(u, codeDuplicateCheckFlag, passwordCheckFlag);
             if(errors.size() > 0) {
@@ -77,7 +77,7 @@ public class UsersUpdateServlet extends HttpServlet {
                 request.setAttribute("user", u);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/edit.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/users/edit.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
@@ -85,9 +85,9 @@ public class UsersUpdateServlet extends HttpServlet {
                 em.close();
                 request.getSession().setAttribute("flush", "更新が完了しました。");
 
-                request.getSession().removeAttribute("employee_id");
+                request.getSession().removeAttribute("users_id");
 
-                response.sendRedirect(request.getContextPath() + "/employees/index");
+                response.sendRedirect(request.getContextPath() + "/users/index");
             }
         }
     }

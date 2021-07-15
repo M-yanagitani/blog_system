@@ -28,7 +28,7 @@
                     </tbody>
                 </table>
 
-                <p><a href="<c:url value='/users/edit?id=${user.id}' />">EDIT [ ユーザ編集 ]</a></p>
+                <p><a href="<c:url value='/users/edit?id=${user.id}' />">⇨ EDIT [ ユーザ編集 ]</a></p>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
