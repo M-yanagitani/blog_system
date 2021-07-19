@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.User;
+import models.validators.UserValidator;
 import utils.DBUtil;
 import utils.EncryptUtil;
-import validators.UserValidator;
 
 /**
  * Servlet implementation class EmployeesUpdateServlet
