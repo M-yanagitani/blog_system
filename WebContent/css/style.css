@@ -101,3 +101,24 @@ select {
 h1 a {
     color: #F9CE00;
 }
+
+table#blog_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#blog_list .blog_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#blog_list .blog_date {
+    width: 20%;
+}
+
+table#blog_list .blog_title {
+    width: 37%;
+}
+
+table#blog_list .blog_action {
+    width: 13%;
+}
