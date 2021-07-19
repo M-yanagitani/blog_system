@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 body {
-    font-color: #00818A;
-    font-family: "Hiragino Kaku Gothic Pro", Meiryo, "MS PGothic", Helvetica,Arial,sans-serif;
+    color: #00818A;
+    font-family: "Impact";
     background-color: #FDFDEB;
 }
 
@@ -15,42 +15,89 @@ body {
 #content {
     width: 94%;
     margin-top: 15px;
-    margin-left: 30px;
     paddig-left: 3%;
-    font-family: "Impact";
-    background-color: #FDFDEB;
-}
-
-#footer {
-    text-align: center;
-    background-color: #09194F;
-    font-family: "Impact";
-    color: #F9CE00;
+    margin: 15px;
 }
 
 h1 {
-    width: 94%;
-    padding-top: 17px;
-    padding-left: 3%;
-    font-size: 30px;
-    font-family: "Impact";
-    color: #F9CE00;
+    font-size: 24px;
+    display: inline;
+    margin: 10px;
 }
 
 h2 {
     font-size: 36px;
     margin-bottom: 15px;
-    font-family: "Impact";
-    color: #00818A;
+}
+
+li {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 p {
-    font-size: 20px;
+    margin-top: 15px;
     margin-bottom: 15px;
-    font-family: "Impact";
-    color: #00818A;
+}
+
+a {
+    text-decoration: none;
+    color: #24738e;
+}
+
+table, tr, th, td {
+    border: 1px solid #cccccc;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+th {
+    width: 26%;
+    padding: 10px 2%;
+}
+
+td {
+    width: 66%;
+    padding: 10px 2%;
+}
+
+button {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+#footer {
+    text-align: center;
+    background-color: #09194F;
+    color: #F9CE00;
 }
 
 select {
     height: 30px;
+}
+
+#header_menu {
+    width: 57%;
+    padding-top: 17px;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+#user_name {
+    color: #F9CE00;
+    width: 36%;
+    padding-right: 3%;
+    text-align: right;
+    display: inline-block;
+}
+
+#header a {
+    color: #F9CE00;
+}
+
+h1 a {
+    color: #F9CE00;
 }

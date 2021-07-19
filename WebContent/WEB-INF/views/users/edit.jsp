@@ -15,11 +15,11 @@
                     <br /><br />
 
                     <label for="code">BLOG TITLE</label><br />
-                    <input type="text" name="code" value="${user.blog_title}" />
+                    <input type="text" name="blog_title" value="${user.blog_title}" />
                     <br /><br />
 
                     <label for="name">PROFILE</label><br />
-                    <input type="text" name="name" value="${user.profile}" />
+                    <input type="text" name="profile" value="${user.profile}" />
                     <br /><br />
 
                     <label for="password">PASSWORD</label><br />

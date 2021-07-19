@@ -67,7 +67,8 @@ public class UsersUpdateServlet extends HttpServlet {
 
             u.setName(request.getParameter("name"));
             u.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-//            u.setDelete_flag(0);
+            u.setBlog_title(request.getParameter("blog_title"));
+            u.setProfile(request.getParameter("profile"));
 
             List<String> errors = UserValidator.validate(u, codeDuplicateCheckFlag, passwordCheckFlag);
             if(errors.size() > 0) {
@@ -85,7 +86,7 @@ public class UsersUpdateServlet extends HttpServlet {
                 em.close();
                 request.getSession().setAttribute("flush", "更新が完了しました。");
 
-                request.getSession().removeAttribute("users_id");
+                request.getSession().removeAttribute("user_id");
 
                 response.sendRedirect(request.getContextPath() + "/users/index");
             }
