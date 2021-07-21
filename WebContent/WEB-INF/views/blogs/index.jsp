@@ -17,7 +17,7 @@
                     <th class="blog_title">タイトル</th>
                     <th class="blog_action">操作</th>
                 </tr>
-                <c:forEach var="blog" items="${reports}" varStatus="status">
+                <c:forEach var="blog" items="${blogs}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="blog_name"><c:out value="${blog.user.name}" /></td>
                         <td class="blog_date"><fmt:formatDate value='${blog.blog_date}' pattern='yyyy-MM-dd' /></td>
