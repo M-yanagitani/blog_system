@@ -21,7 +21,7 @@
                     <tr class="row${status.count % 2}">
                         <td class="blog_name"><c:out value="${blog.user.name}" /></td>
                         <td class="blog_date"><fmt:formatDate value='${blog.blog_date}' pattern='yyyy-MM-dd' /></td>
-                        <td class="blog_title">${report.title}</td>
+                        <td class="blog_title">${blog.title}</td>
                         <td class="blog_action"><a href="<c:url value='/blogs/show?id=${blog.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
@@ -29,7 +29,7 @@
         </table>
 
         <div id="pagination">
-            （全 ${reports_count} 件）<br />
+            （全 ${blogs_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((blogs_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
