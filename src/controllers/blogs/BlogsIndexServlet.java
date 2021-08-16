@@ -40,18 +40,18 @@ public class BlogsIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
-        List<Blog> reports = em.createNamedQuery("getAllBlogs", Blog.class)
+        List<Blog> blogs = em.createNamedQuery("getAllBlogs", Blog.class)
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
                                   .getResultList();
 
-        long reports_count = (long)em.createNamedQuery("getBlogsCount", Long.class)
+        long blogs_count = (long)em.createNamedQuery("getBlogsCount", Long.class)
                                      .getSingleResult();
 
         em.close();
 
-        request.setAttribute("blogs", reports);
-        request.setAttribute("blogs_count", reports_count);
+        request.setAttribute("blogs", blogs);
+        request.setAttribute("blogs_count", blogs_count);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));

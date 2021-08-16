@@ -1,6 +1,7 @@
-package controllers.users;
+package controllers.blogs;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -12,22 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.User;
-import models.validators.UserValidator;
+import models.Blog;
+import models.validators.BlogValidator;
 import utils.DBUtil;
-import utils.EncryptUtil;
 
 /**
- * Servlet implementation class EmployeesCreateServlet
+ * Servlet implementation class ReportsUpdateServlet
  */
-@WebServlet("/users/create")
-public class UsersCreateServlet extends HttpServlet {
+@WebServlet("/blogs/update")
+public class BlogsUpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UsersCreateServlet() {
+    public BlogsUpdateServlet() {
         super();
     }
 
@@ -39,41 +39,32 @@ public class UsersCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            User u = new User();
+            Blog b = em.find(Blog.class, (Integer)(request.getSession().getAttribute("blog_id")));
 
-            u.setCode(request.getParameter("code"));
-            u.setName(request.getParameter("name"));
-            u.setPassword(
-                EncryptUtil.getPasswordEncrypt(
-                    request.getParameter("password"),
-                        (String)this.getServletContext().getAttribute("pepper")
-                    )
-                );
-            u.setProfile("");
-            u.setBlog_title("NO TITLE");
+            b.setBlog_date(Date.valueOf(request.getParameter("blog_date")));
+            b.setTitle(request.getParameter("title"));
+            b.setContent(request.getParameter("content"));
+            b.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
-            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            u.setCreated_at(currentTime);
-            u.setUpdated_at(currentTime);
-
-            List<String> errors = UserValidator.validate(u, true, true);
+            List<String> errors = BlogValidator.validate(b);
             if(errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("user", u);
+                request.setAttribute("blog", b);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/users/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/blogs/edit.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
-                em.persist(u);
                 em.getTransaction().commit();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
                 em.close();
+                request.getSession().setAttribute("flush", "更新が完了しました。");
 
-                response.sendRedirect(request.getContextPath() + "/users/index");
+                request.getSession().removeAttribute("blog_id");
+
+                response.sendRedirect(request.getContextPath() + "/blogs/index");
             }
         }
     }

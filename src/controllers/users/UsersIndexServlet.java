@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Follow;
 import models.User;
 import utils.DBUtil;
 
@@ -34,6 +35,8 @@ public class UsersIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             EntityManager em = DBUtil.createEntityManager();
 
+            User login_user = (User)request.getSession().getAttribute("login_user");
+
             int page = 1;
             try{
                 page = Integer.parseInt(request.getParameter("page"));
@@ -46,9 +49,14 @@ public class UsersIndexServlet extends HttpServlet {
             long users_count = (long)em.createNamedQuery("getUsersCount", Long.class)
                                        .getSingleResult();
 
+            List<Follow> follows = em.createNamedQuery("getMyAllFollows", Follow.class)
+                    .setParameter("user", login_user)
+                    .getResultList();
+
             em.close();
 
             request.setAttribute("users", users);
+            request.setAttribute("follows", follows);
             request.setAttribute("users_count", users_count);
             request.setAttribute("page", page);
             if(request.getSession().getAttribute("flush") != null) {

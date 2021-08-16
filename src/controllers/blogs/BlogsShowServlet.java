@@ -35,6 +35,14 @@ public class BlogsShowServlet extends HttpServlet {
 
         Blog b = em.find(Blog.class, Integer.parseInt(request.getParameter("id")));
 
+//        36行目はバラすと下記の様な感じ。
+//        "/WEB-INF/views/blogs/show.jsp" 25行目 id=${blog.id} は
+//        Blog.javaのidとは関係がないただの変数名
+
+//        Integer a = Integer.parseInt(request.getParameter("id"));
+//        Blog b = em.find(Blog.class, a);
+
+
         em.close();
 
         request.setAttribute("blog", b);

@@ -28,6 +28,10 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "checkLoginCodeAndPassword",
         query = "SELECT u FROM User AS u WHERE u.code = :code AND u.password = :pass"
+    ),
+    @NamedQuery(
+            name = "getUserCode",
+            query = "SELECT u FROM User AS u WHERE u.code = :code"
     )
 })
 

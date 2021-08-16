@@ -28,7 +28,9 @@
                     </tbody>
                 </table>
 
-                <p><a href="<c:url value='/users/edit?id=${user.id}' />">⇨ EDIT [ ユーザ編集 ]</a></p>
+                <c:if test="${sessionScope.login_user.id == user.id}">
+                    <p><a href="<c:url value='/users/edit?id=${user.id}' />">⇨ EDIT [ ユーザ編集 ]</a></p>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

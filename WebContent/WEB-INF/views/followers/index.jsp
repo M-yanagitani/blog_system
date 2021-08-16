@@ -1,36 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:import url="../layout/app.jsp">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
-        <c:if test="${flush != null}">
-            <div id="flush_success">
-                <c:out value="${flush}"></c:out>
-            </div>
-        </c:if>
+        <h2>FOLLOW</h2>
 
-        <!-- ユーザページ -->
-        <h2>USERS</h2>
-        <table id="user_list" border="1">
-        <form method="GET" action="<c:url value='/users/serch' />">
-            <input type="text" name="code" value="" />
-            <button type="submit">SERCH</button>
-        </form>
+        <table id="follow_list" border="1">
             <tbody>
                 <tr>
-                    <th>USER ID</th>
                     <th>NAME</th>
                     <th>BLOG</th>
                     <th>PROFILE</th>
                     <th>FOLLOW</th>
                 </tr>
-                <c:forEach var="user" items="${users}" varStatus="status">
+                <c:forEach var="follower" items="${followers}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td><c:out value="${user.code}" /></td>
-                        <td><a href="<c:url value='/index.html?id=${user.id}' />">
-                                <c:out value="${user.name}" /></a></td>
-                        <td><c:out value="${user.blog_title}" /></td>
-                        <td><c:out value="${user.profile}" /></td>
+                        <td><a href="<c:url value='/index.html?id=${follower.follow_user.id}' />">
+                            <c:out value="${follower.follow_user.name}" /></a></td>
+                        <td><c:out value="${follower.follow_user.blog_title}" /></td>
+                        <td><c:out value="${follower.follow_user.profile}" /></td>
                         <td>
                             <c:choose>
                                 <c:when test="${follows != null}">
@@ -59,25 +48,20 @@
         </table>
 
         <div id="pagination">
-            (全 ${users_count} 件)<br />
-            <c:forEach var="i" begin="1" end="${((users_count - 1) / 15) + 1}"
-                step="1">
+            (全 ${followers_count} 件)<br />
+            <c:forEach var="i" begin="1" end="${((followers_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
                         <c:out value="${i}" />&nbsp;
                     </c:when>
                     <c:otherwise>
-                        <a href="<c:url value='/users/index?page=${i}' />"><c:out
-                                value="${i}" /></a>&nbsp;
+                        <a href="<c:url value='/followers/index?page=${i}' />">
+                        <c:out value="${i}" /></a>&nbsp;
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
         </div>
-        <input type="hidden" name="_token" value="${_token}" />
-        <button type="submit">ENTRY</button>
-        <p>
-            <a href="<c:url value='/users/new' />">⇨ SIGN UP [ 新規登録 ]</a>
-        </p>
 
+        <p><a href="<c:url value="/blogs/index" />">⇨ INDEX</a></p>
     </c:param>
 </c:import>

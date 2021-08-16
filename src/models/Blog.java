@@ -17,14 +17,22 @@ import javax.persistence.Table;
 
 @Table(name = "blogs")
 @NamedQueries({
-    @NamedQuery(
-        name = "getAllBlogs",
-        query = "SELECT b FROM Blog AS b ORDER BY b.id DESC"
-    ),
-    @NamedQuery(
-        name = "getBlogsCount",
-        query = "SELECT COUNT(b) FROM Blog AS b"
-    ),
+        @NamedQuery(
+                name = "getAllBlogs",
+                query = "SELECT b FROM Blog AS b ORDER BY b.id DESC"
+                ),
+        @NamedQuery(
+                name = "getBlogsCount",
+                query = "SELECT COUNT(b) FROM Blog AS b"
+                ),
+        @NamedQuery(
+                name = "getMyAllBlogs",
+                query = "SELECT b FROM Blog AS b WHERE b.user = :user ORDER BY b.id DESC"
+                ),
+        @NamedQuery(
+                name = "getMyBlogsCount",
+                query = "SELECT COUNT(b) FROM Blog AS b WHERE b.user = :user"
+                )
 })
 @Entity
 

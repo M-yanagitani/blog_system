@@ -26,6 +26,10 @@
             <button type="submit">ENTER</button>
             <br /><br />
 
+            <p>
+            <a href="<c:url value='/users/new' />">⇨ SIGN UP [ 新規登録 ]</a>
+            </p>
+
         </form>
     </c:param>
 </c:import>
